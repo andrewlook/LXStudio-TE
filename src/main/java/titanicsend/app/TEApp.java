@@ -226,6 +226,7 @@ public class TEApp extends PApplet implements LXPlugin {
     // Patterns that will not aspire to art direction standards
     lx.registry.addPattern(SigmoidDance.class);
     lx.registry.addPattern(SigmoidDanceAudio.class);
+    lx.registry.addPattern(SigmoidDanceAveraged.class);
     lx.registry.addPattern(TriangleCross.class);
     lx.registry.addPattern(TriangleCrossAudio.class);
     //lx.registry.addPattern(TriangleInfinity.class);
@@ -233,6 +234,7 @@ public class TEApp extends PApplet implements LXPlugin {
     lx.registry.addPattern(CrossSectionsStratifiedAudio.class);
     lx.registry.addPattern(CrossSectionsFullBandAudio.class);
     lx.registry.addPattern(PlaneSingle.class);
+    lx.registry.addPattern(PlaneArray.class);
     lx.registry.addPattern(PlaneSingleParam.class);
     //lx.registry.addPattern(PlaneAskew.class);
     //lx.registry.addPattern(EdgeOrientation.class);

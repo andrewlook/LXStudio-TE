@@ -4,22 +4,18 @@ import heronarts.lx.LX;
 import heronarts.lx.LXCategory;
 import heronarts.lx.color.LXColor;
 import heronarts.lx.model.LXPoint;
-import heronarts.lx.modulator.SinLFO;
 import heronarts.lx.parameter.CompoundParameter;
 import heronarts.lx.parameter.DiscreteParameter;
-import heronarts.lx.parameter.LXParameter;
 import titanicsend.pattern.TEPerformancePattern;
 import titanicsend.pattern.yoffa.framework.TEShaderView;
 
-import static com.jogamp.opengl.math.FloatUtil.sqrt;
 import static heronarts.lx.color.LXColor.add;
 import static java.lang.Float.min;
 import static java.lang.Math.abs;
-import static java.lang.Math.max;
 import static titanicsend.util.TEMath.clamp;
 
 @LXCategory("Look Java Patterns")
-public class PlaneSingle extends TEPerformancePattern {
+public class PlaneArray extends TEPerformancePattern {
 
 //    public final SinLFO aLFO;
 //    public final SinLFO bLFO;
@@ -48,7 +44,7 @@ public class PlaneSingle extends TEPerformancePattern {
 
     PlaneAskew.Plane[] planes;
 
-    public PlaneSingle(LX lx) {
+    public PlaneArray(LX lx) {
         super(lx, TEShaderView.ALL_POINTS);
 
         minX = modelTE.boundaryPoints.minXBoundaryPoint.x;
@@ -86,6 +82,7 @@ public class PlaneSingle extends TEPerformancePattern {
 //        addParameter("c", c);
 //        addParameter("d", d);
         addParameter("thickness", thickness);
+        addParameter("numPlanes", numPlanes);
     }
 
     public void runTEAudioPattern(double deltaMs) {

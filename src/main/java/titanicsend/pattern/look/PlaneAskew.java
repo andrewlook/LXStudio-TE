@@ -20,7 +20,7 @@ public class PlaneAskew extends TEPerformancePattern {
 
     DiscreteParameter numPlanes = new DiscreteParameter("Number", new String[]{"3", "2", "1"});
     CompoundParameter thickness = new CompoundParameter("Thick", 0.2, 0.1, 0.9);
-    class Plane {
+    public static class Plane {
         private final SinLFO a;
         private final SinLFO b;
         private final SinLFO c;
@@ -29,17 +29,25 @@ public class PlaneAskew extends TEPerformancePattern {
         float cv = 1;
         float denom = 0.1f;
 
-        Plane(int i) {
-            addModulator(a = new SinLFO(-1, 1, 4000 + 1029 * i)).trigger();
-            addModulator(b = new SinLFO(-1, 1, 11000 - 1104 * i)).trigger();
-            addModulator(c = new SinLFO(-50, 50, 4000 + 1000 * i * ((i % 2 == 0) ? 1 : -1))).trigger();
+        Plane(TEPerformancePattern parent, int i) {
+            parent.addModulator(a = new SinLFO(-1, 1, 4000 + 1029 * i)).trigger();
+            parent.addModulator(b = new SinLFO(-1, 1, 11000 - 1104 * i)).trigger();
+            parent.addModulator(c = new SinLFO(0, 1, 4000 + 1000 * i * ((i % 2 == 0) ? 1 : -1))).trigger();
         }
 
         void run(double deltaMs) {
             av = a.getValuef();
             bv = b.getValuef();
-            cv = c.getValuef();
+            cv = 0f;
+//            cv = c.getValuef();
             denom = FloatUtil.sqrt(av * av + bv * bv);
+        }
+
+        float dist(float normX, float normY) {
+            float aTerm = av * normX;
+            float bTerm = bv * normY;
+            float abcDenom = abs(aTerm + bTerm + cv) / denom;
+            return abcDenom;
         }
     }
 
@@ -72,7 +80,7 @@ public class PlaneAskew extends TEPerformancePattern {
 
         planes = new Plane[NUM_PLANES];
         for (int i = 0; i < planes.length; ++i) {
-            planes[i] = new Plane(i);
+            planes[i] = new Plane(this, i);
         }
 
         addParams();
@@ -117,13 +125,11 @@ public class PlaneAskew extends TEPerformancePattern {
 
                 if (plane.denom != 0) {
 //                    System.out.printf("norm(x,y,z) = (%f, %f, %f)\n", normX, normY, normZ);
-                    float aTerm = plane.av * normX;
-                    float bTerm = plane.bv * normY;
-                    float abcDenom = abs(aTerm + bTerm + plane.cv) / plane.denom;
+
 //                    System.out.printf("plane.av + normX = %f\n", aTerm);
 //                    System.out.printf("plane.bv + normY = %f\n", bTerm);
 //                    System.out.printf("abs(aTerm + bTerm + plane.cv) / plane.denom = %f\n", abcDenom);
-                    d = min(d, abcDenom);
+                    d = min(d, plane.dist(normX, normY));
                 }
             }
 //            System.out.printf("d = %f\n", d);
