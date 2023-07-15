@@ -16,8 +16,7 @@ import static java.lang.Math.abs;
 import static java.lang.Math.max;
 import static titanicsend.util.TEMath.clamp;
 
-// TODO(look): more appropriate category
-@LXCategory("Native Shaders Panels")
+@LXCategory("Look Java Patterns")
 public class PlaneSingle extends TEPerformancePattern {
 
     public final SinLFO aLFO;

@@ -14,8 +14,7 @@ import static heronarts.lx.color.LXColor.add;
 import static java.lang.Math.*;
 import static titanicsend.util.TEMath.clamp;
 
-// TODO(look): more appropriate category
-@LXCategory("Native Shaders Panels")
+@LXCategory("Look Java Patterns")
 public class PlaneAskew extends TEPerformancePattern {
     float huev = 0;
 

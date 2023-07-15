@@ -9,7 +9,7 @@ import titanicsend.pattern.yoffa.framework.PatternTarget;
 import titanicsend.pattern.yoffa.framework.TEShaderView;
 import titanicsend.pattern.yoffa.shader_engine.NativeShader;
 
-@LXCategory("Native Shaders Panels")
+@LXCategory("Look Shader Patterns")
 public class TriangleCross extends TEPerformancePattern {
     NativeShaderPatternEffect effect;
     NativeShader shader;

@@ -210,26 +210,13 @@ public class TEApp extends PApplet implements LXPlugin {
     lx.registry.addPattern(PixelblazeParallel.class);
     lx.registry.addPattern(RainBands.class);
     lx.registry.addPattern(RadialSimplex.class);
-    lx.registry.addPattern(SigmoidDance.class);
-    lx.registry.addPattern(SigmoidDanceAudio.class);
+
     lx.registry.addPattern(SimplexPosterized.class);
     lx.registry.addPattern(SpaceExplosionFX.class);
     lx.registry.addPattern(TEMidiFighter64DriverPattern.class);
     lx.registry.addPattern(TESparklePattern.class);
     lx.registry.addPattern(TurbulenceLines.class);
     lx.registry.addPattern(TriangleNoise.class);
-    lx.registry.addPattern(TriangleCross.class);
-    lx.registry.addPattern(TriangleCrossAudio.class);
-    lx.registry.addPattern(CrossSections.class);
-    lx.registry.addPattern(CrossSectionsStratifiedAudio.class);
-    lx.registry.addPattern(CrossSectionsFullBandAudio.class);
-
-    lx.registry.addPattern(PlaneSingle.class);
-    lx.registry.addPattern(PlaneSingleParam.class);
-//    lx.registry.addPattern(PlaneAskew.class);
-    
-    lx.registry.addPattern(EdgeOrientation.class);
-    lx.registry.addPattern(TriangleInfinity.class);
     lx.registry.addPattern(SpiralDiamonds.class);
     lx.registry.addPattern(PulsingTriangles.class);
     lx.registry.addPattern(Fire.class);
@@ -237,6 +224,18 @@ public class TEApp extends PApplet implements LXPlugin {
     lx.registry.addPattern(TEGradientPattern.class);
 
     // Patterns that will not aspire to art direction standards
+    lx.registry.addPattern(SigmoidDance.class);
+    lx.registry.addPattern(SigmoidDanceAudio.class);
+    lx.registry.addPattern(TriangleCross.class);
+    lx.registry.addPattern(TriangleCrossAudio.class);
+    //lx.registry.addPattern(TriangleInfinity.class);
+    lx.registry.addPattern(CrossSections.class);
+    lx.registry.addPattern(CrossSectionsStratifiedAudio.class);
+    lx.registry.addPattern(CrossSectionsFullBandAudio.class);
+    lx.registry.addPattern(PlaneSingle.class);
+    lx.registry.addPattern(PlaneSingleParam.class);
+    //lx.registry.addPattern(PlaneAskew.class);
+    //lx.registry.addPattern(EdgeOrientation.class);
 
     // Examples for teaching and on-boarding developers
     lx.registry.addPattern(BasicRainbowPattern.class);

@@ -8,7 +8,7 @@ import titanicsend.pattern.yoffa.framework.PatternTarget;
 import titanicsend.pattern.yoffa.framework.TEShaderView;
 import titanicsend.pattern.yoffa.shader_engine.NativeShader;
 
-@LXCategory("Look Patterns")
+@LXCategory("Look Shader Patterns")
 public class SigmoidDance extends TEPerformancePattern {
     NativeShaderPatternEffect effect;
     NativeShader shader;

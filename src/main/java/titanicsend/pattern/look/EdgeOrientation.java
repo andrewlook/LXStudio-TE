@@ -10,7 +10,7 @@ import titanicsend.pattern.TEPattern;
 import java.util.ArrayList;
 import java.util.List;
 
-@LXCategory("Native Shaders Panels")  // TODO: better category
+@LXCategory("Look Java Patterns")
 public class EdgeOrientation extends TEPattern {
     public final BooleanParameter flatMode =
             new BooleanParameter("flat", true)
