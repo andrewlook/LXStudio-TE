@@ -37,7 +37,7 @@ public class PlaneSingle extends TEPerformancePattern {
 
 
     final CompoundParameter a = new CompoundParameter("a", 0.3, -1.0, 1.0);
-    final CompoundParameter b = new CompoundParameter("b", 0.2, -1.0, 1.0);
+    final CompoundParameter b = new CompoundParameter("b", 0.2, 0.0, 1.0);
     final CompoundParameter c = new CompoundParameter("c", 0.5, -1.0, 1.0);
     final CompoundParameter d = new CompoundParameter("d", 0.5, -1.0, 1.0);
 
@@ -84,31 +84,32 @@ public class PlaneSingle extends TEPerformancePattern {
         float b = this.b.getValuef();
         float c = this.c.getValuef();
         float d = this.d.getValuef();
+
+        a = aLFO.getValuef();
+        b = bLFO.getValuef();
+        c = cLFO.getValuef();
+        d = dLFO.getValuef();
+
         float denom = sqrt(a*a + b*b + c*c);
 
         float hue = LXColor.h(LXColor.BLUE);
         float thicknessf = thickness.getValuef();
+        float brightnessf = (float) getBrightness();
 
         for (LXPoint p : model.points) {
 
-            float xNorm = p.x / xRange;
-            float yNorm = p.y / yRange;
-            float zNorm = p.z / zRange;
+            float xNorm = p.x / maxX;
+            float yNorm = p.y / maxY;
+            float zNorm = p.z / maxZ;
 
             float distToPlane = abs(a * xNorm + b * yNorm + c * zNorm + d) / denom;
 
-
-//            System.out.printf("Math.abs(p.y - maxY) / yRange = %f\n", Math.abs(p.y - maxY) / yRange);
-//            System.out.printf("Math.abs(p.x - maxX) / xRange = %f\n", Math.abs(p.x - maxX) / xRange);
-//            System.out.printf("Math.abs(p.z - maxZ) / zRange = %f\n", Math.abs(p.z - maxZ) / zRange);
-//                System.out.printf("xlv=%f, xwv=%f, p.x=%f, xv=%f, Math.abs(p.x-xv)=%f\n", xlv, xwv, p.x, xv, Math.abs(p.x-xv) / maxX);
-//                System.out.printf("xlv - xwv * Math.abs(p.x - xv) = %f, max(0, xlv - xwv * Math.abs(p.x - xv)) = %f\n\n", xlv - xwv * Math.abs(p.x - xv) / maxX, max(0, xlv - xwv * Math.abs(p.x - xv) / maxX));
             int col = 0;
+            float brightnessTerm = distToPlane < thicknessf ? 100f : 0f;
             col = add(col, LXColor.hsb(
                     hue + distToPlane * 100f, // p.x / (10 * xRange) + p.y / (3 * yRange),
                     clamp(140 - 110.0f * abs(p.y - maxY) / yRange, 0, 100),
-                    distToPlane < thicknessf ? 100f : 0f
-                    //max(0, (distToPlane - thicknessf) * 100f)
+                    brightnessf * brightnessTerm
             ));
             colors[p.index] = col;
         }
