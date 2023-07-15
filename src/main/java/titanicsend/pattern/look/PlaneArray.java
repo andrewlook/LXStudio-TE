@@ -1,5 +1,6 @@
 package titanicsend.pattern.look;
 
+import com.jogamp.opengl.math.FloatUtil;
 import heronarts.lx.LX;
 import heronarts.lx.LXCategory;
 import heronarts.lx.color.LXColor;
@@ -12,6 +13,7 @@ import titanicsend.pattern.yoffa.framework.TEShaderView;
 import static heronarts.lx.color.LXColor.add;
 import static java.lang.Float.min;
 import static java.lang.Math.abs;
+import static java.lang.Math.sqrt;
 import static titanicsend.util.TEMath.clamp;
 
 @LXCategory("Look Java Patterns")
@@ -108,14 +110,42 @@ public class PlaneArray extends TEPerformancePattern {
         float thicknessf = thickness.getValuef();
         float brightnessf = (float) getBrightness();
 
+        float[] mins = new float[]{Float.MAX_VALUE, Float.MAX_VALUE, Float.MAX_VALUE, Float.MAX_VALUE};
+        float[] maxs = new float[]{Float.MIN_VALUE, Float.MIN_VALUE, Float.MIN_VALUE, Float.MIN_VALUE};
+
+
         for (LXPoint p : model.points) {
 
             float xNorm = p.x / maxX;
             float yNorm = p.y / maxY;
             float zNorm = p.z / maxZ;
 
+            if (xNorm < mins[0]) {
+                mins[0] = xNorm;
+            } else if (xNorm > maxs[0]) {
+                maxs[0] = xNorm;
+            }
+            if (yNorm < mins[1]) {
+                mins[1] = yNorm;
+            } else if (yNorm > maxs[1]) {
+                maxs[1] = yNorm;
+            }
+            if (zNorm < mins[2]) {
+                mins[2] = zNorm;
+            } else if (zNorm > maxs[2]) {
+                maxs[2] = zNorm;
+            }
+
+            float fromCenter = FloatUtil.sqrt(xNorm * xNorm + yNorm * yNorm + zNorm * zNorm);
+//            System.out.printf("fromCenter: %f", fromCenter);
+            if (fromCenter < mins[3]) {
+                mins[3] = fromCenter;
+            } else if (fromCenter > maxs[3]) {
+                maxs[3] = fromCenter;
+            }
+
             float d = Float.MAX_VALUE;
-            for (int i = 0; i < numPlanes.getValuei(); ++i) {
+            for (int i = 0; i < 3; ++i) {
                 float distToPlane = planes[i].dist(zNorm, yNorm);
                 d = min(d, distToPlane);
             }
@@ -123,13 +153,19 @@ public class PlaneArray extends TEPerformancePattern {
 //            float distToPlane = abs(a * xNorm + b * yNorm + c * zNorm + d) / denom;
 
             int col = 0;
-            float brightnessTerm = d < thicknessf ? 100f : 0f;
+            float brightnessTerm = d < (thicknessf * fromCenter) ? 100f : 0f;
             col = add(col, LXColor.hsb(
-                    hue + d * 100f, // p.x / (10 * xRange) + p.y / (3 * yRange),
+                    hue /*+ d * 100f*/ + fromCenter * 150f, // p.x / (10 * xRange) + p.y / (3 * yRange),
                     clamp(140 - 110.0f * abs(p.y - maxY) / yRange, 0, 100),
                     brightnessf * brightnessTerm
             ));
             colors[p.index] = col;
         }
+        System.out.printf("x (%f, %f), y (%f, %f), z (%f, %f), fromCenter (%f, %f)\n",
+                mins[0], maxs[0],
+                mins[1], maxs[1],
+                mins[2], maxs[2],
+                mins[3], maxs[3]
+        );
     }
 }

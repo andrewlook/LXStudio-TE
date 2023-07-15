@@ -9,11 +9,11 @@ import titanicsend.pattern.yoffa.framework.TEShaderView;
 import titanicsend.pattern.yoffa.shader_engine.NativeShader;
 
 @LXCategory("Look Shader Patterns")
-public class SigmoidDance extends TEPerformancePattern {
+public class SigmoidDanceAveraged extends TEPerformancePattern {
     NativeShaderPatternEffect effect;
     NativeShader shader;
 
-    public SigmoidDance(LX lx) {
+    public SigmoidDanceAveraged(LX lx) {
         super(lx, TEShaderView.DOUBLE_LARGE);
 
 //        controls.setRange(TEControlTag.SPEED, 0.6, -1, 1);
