@@ -161,11 +161,11 @@ public class PlaneArray extends TEPerformancePattern {
             ));
             colors[p.index] = col;
         }
-        System.out.printf("x (%f, %f), y (%f, %f), z (%f, %f), fromCenter (%f, %f)\n",
-                mins[0], maxs[0],
-                mins[1], maxs[1],
-                mins[2], maxs[2],
-                mins[3], maxs[3]
-        );
+//        System.out.printf("x (%f, %f), y (%f, %f), z (%f, %f), fromCenter (%f, %f)\n",
+//                mins[0], maxs[0],
+//                mins[1], maxs[1],
+//                mins[2], maxs[2],
+//                mins[3], maxs[3]
+//        );
     }
 }
