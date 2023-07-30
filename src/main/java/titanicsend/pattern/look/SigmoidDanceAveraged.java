@@ -28,10 +28,53 @@ public class SigmoidDanceAveraged extends TEPerformancePattern {
                 new PatternTarget(this));
     }
 
+    private float minLow = Float.POSITIVE_INFINITY;
+    private float maxLow = Float.NEGATIVE_INFINITY;
+    private float minHigh = Float.POSITIVE_INFINITY;
+    private float maxHigh = Float.NEGATIVE_INFINITY;
+
+
     @Override
     public void runTEAudioPattern(double deltaMs) {
+        int fullNBands = eq.getNumBands();
+        int halfNBands = fullNBands / 2;
 
-        //shader.setUniform("iRotationAngle",(float) -getRotationAngleFromSpin());
+        // TODO: EMA?
+        float avgLow = eq.getAveragef(0, halfNBands);
+
+        float avgHigh = eq.getAveragef(halfNBands, fullNBands - halfNBands);
+
+        // TODO: keep max/min on a moving window?
+        if (avgLow < minLow) {
+            minLow = avgLow;
+        }
+        if (avgLow > maxLow) {
+            maxLow = avgLow;
+        }
+        if (avgHigh < minHigh) {
+            minHigh = avgHigh;
+        }
+        if (avgHigh > maxHigh) {
+            maxHigh = avgHigh;
+        }
+
+        System.out.printf("fullNBands = %s, halfNBands = %s\n", fullNBands, halfNBands);
+        System.out.printf("avgLow = %s, avgHigh = %s\n", avgLow, avgHigh);
+
+        float normLow = avgLow / (maxLow - minLow);
+        float normHigh = avgHigh / (maxHigh - minHigh);
+        System.out.printf("normLow = %s, normHigh = %s\n", normLow, normHigh);
+
+        float scaledLow = normLow * 2 - 1;
+        float scaledHigh = normHigh * 2 - 1;
+        System.out.printf("scaledLow = %s, scaledHigh = %s\n", scaledLow, scaledHigh);
+
+//        shader.setUniform("iWow1", avgLow);
+//        shader.setUniform("iWow2", avgHigh);
+//        shader.setUniform("iWow1", normLow);
+//        shader.setUniform("iWow2", normHigh);
+        shader.setUniform("iWow1", scaledLow);
+        shader.setUniform("iWow2", scaledHigh);
 
         // run the shader
         effect.run(deltaMs);
