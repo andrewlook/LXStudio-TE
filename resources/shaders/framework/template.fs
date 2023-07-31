@@ -13,6 +13,10 @@ uniform float sinPhaseBeat;
 uniform float bassLevel;
 uniform float trebleLevel;
 
+uniform float iVolumeRatio;
+uniform float iBassRatio;
+uniform float iTrebleRatio;
+
 // TE Colors
 uniform vec3 iColorRGB;
 uniform vec3 iColorHSB;
