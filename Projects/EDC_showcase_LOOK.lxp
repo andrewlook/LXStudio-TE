@@ -1,6 +1,6 @@
 {
   "version": "0.4.4-SNAPSHOT",
-  "timestamp": 1690753397897,
+  "timestamp": 1691081194076,
   "model": {
     "id": 2,
     "class": "heronarts.lx.structure.LXStructure",
@@ -2702,7 +2702,7 @@
             },
             "parameters": {
               "label": "Input",
-              "device": 2
+              "device": 4
             },
             "children": {}
           },
@@ -2737,23 +2737,23 @@
               "range": 48.0,
               "attack": 2.000000178813932,
               "release": 32.40000458657757,
-              "slope": 7.950000090524554,
-              "band-1": 0.05907038065960568,
-              "band-2": 0.11903708041980376,
-              "band-3": 0.17654913064931954,
-              "band-4": 0.2589360197775491,
-              "band-5": 0.35837800017053967,
-              "band-6": 0.38329771606531404,
-              "band-7": 0.30096633380713345,
-              "band-8": 0.2595817284674311,
-              "band-9": 0.3219866839633404,
-              "band-10": 0.3178165810083513,
-              "band-11": 0.3072931780980507,
-              "band-12": 0.3528399472780449,
-              "band-13": 0.3348874121857449,
-              "band-14": 0.23534851577657145,
-              "band-15": 0.19111298610402183,
-              "band-16": 0.18444604251903718
+              "slope": -2.0999996848404408,
+              "band-1": 0.0,
+              "band-2": 0.0,
+              "band-3": 0.0,
+              "band-4": 0.0,
+              "band-5": 0.0,
+              "band-6": 0.0,
+              "band-7": 0.0,
+              "band-8": 0.0,
+              "band-9": 0.0,
+              "band-10": 0.0,
+              "band-11": 0.0,
+              "band-12": 0.0,
+              "band-13": 0.0,
+              "band-14": 0.0,
+              "band-15": 0.0,
+              "band-16": 0.0
             },
             "children": {}
           }
@@ -2770,7 +2770,7 @@
           "label": "Mixer",
           "crossfader": 0.7952755905511811,
           "crossfaderBlendMode": 1,
-          "focusedChannel": 1,
+          "focusedChannel": 0,
           "focusedChannelAux": 2,
           "cueA": false,
           "cueB": false,
@@ -2942,9 +2942,9 @@
             },
             "parameters": {
               "label": "ONE",
-              "fader": 0.0,
+              "fader": 1.0,
               "arm": false,
-              "selected": false,
+              "selected": true,
               "enabled": true,
               "cue": false,
               "aux": false,
@@ -3010,7 +3010,7 @@
                   "te_angle": 0.0,
                   "panic": false,
                   "viewPerPattern": 6,
-                  "swatchPerChannel": 0
+                  "swatchPerChannel": 16
                 },
                 "children": {
                   "modulation": {
@@ -3074,9 +3074,9 @@
                   "te_color/blendMode": 0,
                   "te_color/offset": 0.0,
                   "te_color/color2offset": 0.5,
-                  "te_speed": 0.5,
+                  "te_speed": 1.1264748967309508,
                   "te_xpos": 0.07999999821186066,
-                  "te_ypos": -0.07999999821186066,
+                  "te_ypos": -0.03999999910593033,
                   "te_size": 0.45909998996183277,
                   "te_quantity": 0.5,
                   "te_spin": 0.07839999649524687,
@@ -3086,8 +3086,8 @@
                   "te_wowtrigger": false,
                   "te_angle": 0.0,
                   "panic": false,
-                  "viewPerPattern": 6,
-                  "swatchPerChannel": 0
+                  "viewPerPattern": 0,
+                  "swatchPerChannel": 16
                 },
                 "children": {
                   "modulation": {
@@ -3164,7 +3164,7 @@
                   "te_angle": 0.0,
                   "panic": false,
                   "viewPerPattern": 1,
-                  "swatchPerChannel": 0
+                  "swatchPerChannel": 16
                 },
                 "children": {
                   "modulation": {
@@ -3327,7 +3327,7 @@
                   "te_angle": 0.0,
                   "panic": false,
                   "viewPerPattern": 6,
-                  "swatchPerChannel": 0
+                  "swatchPerChannel": 16
                 },
                 "children": {
                   "modulation": {
@@ -3404,7 +3404,7 @@
                   "te_angle": 0.0,
                   "panic": false,
                   "viewPerPattern": 5,
-                  "swatchPerChannel": 0
+                  "swatchPerChannel": 16
                 },
                 "children": {
                   "modulation": {
@@ -3460,8 +3460,8 @@
               "label": "TWO",
               "fader": 1.0,
               "arm": false,
-              "selected": true,
-              "enabled": true,
+              "selected": false,
+              "enabled": false,
               "cue": false,
               "aux": false,
               "crossfadeGroup": 0,
@@ -5341,11 +5341,11 @@
                   "panic": false,
                   "viewPerPattern": 0,
                   "swatchPerChannel": 0,
-                  "Double Speed": false,
-                  "Glow": 0.1,
                   "Energy": 0.0,
-                  "Width": 0.5,
-                  "Double Layer": false
+                  "Glow": 0.1,
+                  "Double Layer": false,
+                  "Double Speed": false,
+                  "Width": 0.5
                 },
                 "children": {
                   "modulation": {
@@ -7283,12 +7283,12 @@
                   "panic": false,
                   "viewPerPattern": 2,
                   "swatchPerChannel": 0,
-                  "Energy": 0.0,
                   "Speed": 0.0,
+                  "Energy": 0.0,
                   "Glow2": 9.0,
-                  "Wibble Size": 0.15,
                   "Thickness": 0.3,
-                  "Glow": 1.5
+                  "Glow": 1.5,
+                  "Wibble Size": 0.15
                 },
                 "children": {
                   "modulation": {
@@ -8523,11 +8523,11 @@
                   "panic": false,
                   "viewPerPattern": 6,
                   "swatchPerChannel": 0,
-                  "speed": 0.7,
-                  "glow": 0.5,
-                  "numBlocks": 30.0,
+                  "ySpread": 1.6,
                   "hideBlocks": false,
-                  "ySpread": 1.6
+                  "numBlocks": 30.0,
+                  "speed": 0.7,
+                  "glow": 0.5
                 },
                 "children": {
                   "modulation": {
@@ -9343,11 +9343,11 @@
                   "panic": false,
                   "viewPerPattern": 0,
                   "swatchPerChannel": 0,
-                  "Double Speed": false,
-                  "Width": 0.5,
-                  "Energy": 0.0,
                   "Double Layer": false,
-                  "Glow": 0.1
+                  "Width": 0.5,
+                  "Glow": 0.1,
+                  "Energy": 0.0,
+                  "Double Speed": false
                 },
                 "children": {
                   "modulation": {
@@ -11285,12 +11285,12 @@
                   "panic": false,
                   "viewPerPattern": 2,
                   "swatchPerChannel": 0,
-                  "Thickness": 0.3,
                   "Glow": 1.5,
-                  "Wibble Size": 0.15,
                   "Energy": 0.0,
-                  "Glow2": 9.0,
-                  "Speed": 0.0
+                  "Speed": 0.0,
+                  "Thickness": 0.3,
+                  "Wibble Size": 0.15,
+                  "Glow2": 9.0
                 },
                 "children": {
                   "modulation": {
@@ -12526,10 +12526,10 @@
                   "viewPerPattern": 6,
                   "swatchPerChannel": 0,
                   "hideBlocks": false,
-                  "numBlocks": 30.0,
                   "glow": 0.5,
-                  "speed": 0.7,
-                  "ySpread": 1.6
+                  "numBlocks": 30.0,
+                  "ySpread": 1.6,
+                  "speed": 0.7
                 },
                 "children": {
                   "modulation": {
@@ -12765,8 +12765,8 @@
         "camera": {
           "active": false,
           "radius": 1.5706921236590596E7,
-          "theta": -1.5423815250396729,
-          "phi": 0.10328763723373413,
+          "theta": 1.7836531596258283,
+          "phi": -0.2980255065485835,
           "x": 2307136.654296875,
           "y": 5348521.701171875,
           "z": -1522245.02734375
@@ -12775,8 +12775,8 @@
           {
             "active": false,
             "radius": 1.5706921236590596E7,
-            "theta": -1.5423815250396729,
-            "phi": 0.10328763723373413,
+            "theta": 1.7836531596258283,
+            "phi": -0.2980255065485835,
             "x": 2307136.654296875,
             "y": 5348521.701171875,
             "z": -1522245.02734375

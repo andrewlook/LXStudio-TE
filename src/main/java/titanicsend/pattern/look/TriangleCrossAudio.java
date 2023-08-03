@@ -15,24 +15,13 @@ public class TriangleCrossAudio extends TEPerformancePattern {
 
     public TriangleCrossAudio(LX lx) {
         super(lx, TEShaderView.DOUBLE_LARGE);
-
-//        controls.setRange(TEControlTag.SPEED, 0.6, -1, 1);
-//        controls.setRange(TEControlTag.WOW1, 0, 0, 2.6);
-//        controls.setRange(TEControlTag.QUANTITY, 0.2, 0.075, 0.3);
-//        controls.setValue(TEControlTag.SPIN,0.125);
-
-        // register common controls with LX
         addCommonControls();
-
         effect = new NativeShaderPatternEffect("triangle_cross_audio.fs",
                 new PatternTarget(this));
     }
 
     @Override
     public void runTEAudioPattern(double deltaMs) {
-
-        //shader.setUniform("iRotationAngle",(float) -getRotationAngleFromSpin());
-
         // run the shader
         effect.run(deltaMs);
     }
