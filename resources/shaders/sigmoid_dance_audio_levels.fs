@@ -6,6 +6,7 @@
 // #iUniform float iWow1 = 0.0 in {0.0, 1.0}
 // #iUniform vec2 iTranslate = vec2(0.0, 0.0)
 
+uniform float avgVolume;
 uniform float iScaledLo;
 uniform float iScaledHi;
 
@@ -45,14 +46,15 @@ vec2 rotate(vec2 st, float a) {
 void mainImage(out vec4 fragColor, in vec2 fragCoord) {
     vec2 st = fragCoord.xy/iResolution.xy;
 
-    st -= 0.5;
     st = rotate(st, iRotationAngle) / iScale;
-    st -= iTranslate;
+    st -= 0.5 / iScale;
 
     vec3 color = vec3(0.);
 
-    float norm_x = iScaledLo;
-    float norm_y = iScaledHi;
+    float norm_y = 0.05 + bassLevel * iWow1;
+    float norm_x = 0.05 + trebleLevel * iWow1;
+    //float norm_x = iScaledLo;
+    //float norm_y = iScaledHi;
 
     float horizOffset = 0.6;
     float vertOffset = 0.3;
