@@ -8,11 +8,6 @@
 
 uniform float avgVolume;
 
-#define TEXTURE_SIZE 512.0
-#define CHANNEL_COUNT 16.0
-#define pixPerBin (TEXTURE_SIZE / CHANNEL_COUNT)
-#define halfBin (pixPerBin / 2.0)
-
 const float PI = 3.14159265359;
 
 float plot(vec2 st, float pct){
@@ -50,6 +45,11 @@ vec2 rotate(vec2 st, float a) {
     st = mat2(cos(a), -sin(a), sin(a), cos(a)) * (st-.5);
     return st + .5;
 }
+
+#define TEXTURE_SIZE 512.0
+#define CHANNEL_COUNT 16.0
+#define pixPerBin (TEXTURE_SIZE / CHANNEL_COUNT)
+#define halfBin (pixPerBin / 2.0)
 
 void mainImage(out vec4 fragColor, in vec2 fragCoord) {
     vec2 st = fragCoord.xy/iResolution.xy;

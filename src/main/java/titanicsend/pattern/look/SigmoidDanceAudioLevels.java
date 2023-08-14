@@ -18,8 +18,9 @@ public class SigmoidDanceAudioLevels extends TEPerformancePattern {
         super(lx, TEShaderView.ALL_POINTS);
 
         controls.setRange(TEControlTag.QUANTITY, 4.0, 0.0, 4.0);
-        controls.setRange(TEControlTag.WOW1, 0.85, 0.0, 2.0);
-        controls.setRange(TEControlTag.SIZE, 0.8, 0.0, 2.0);
+        controls.setRange(TEControlTag.WOW1, 1.5, 0.0, 2.0);
+        controls.setRange(TEControlTag.WOW2, 0.2, 0.0, 2.0);
+        controls.setRange(TEControlTag.SIZE, 0.55, 0.0, 2.0);
 
         addCommonControls();
 
