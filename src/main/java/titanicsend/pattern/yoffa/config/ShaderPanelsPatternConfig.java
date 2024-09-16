@@ -57,6 +57,9 @@ public class ShaderPanelsPatternConfig {
 
         @Override
         protected List<PatternEffect> createEffects() {
+            controls.setRange(TEControlTag.QUANTITY,.25,.01,.5);  // segment length
+
+
             return List.of(new NativeShaderPatternEffect("neon_heart.fs",
                 new PatternTarget(this)));
         }
@@ -130,6 +133,7 @@ public class ShaderPanelsPatternConfig {
             controls.setRange(TEControlTag.SPEED, 0, -4, 4);
             controls.setValue(TEControlTag.SPEED, 0.5);
             controls.setRange(TEControlTag.QUANTITY,1,2,0.1);  // triangle density
+            controls.setRange(TEControlTag.WOW1,1,0.2,5);  // glow
 
             return List.of(new NativeShaderPatternEffect("neon_triangles.fs",
                 new PatternTarget(this)));
@@ -174,6 +178,8 @@ public class ShaderPanelsPatternConfig {
 
         @Override
         protected List<PatternEffect> createEffects() {
+            controls.setRange(TEControlTag.SIZE, 1, 2.5, 0.4); // overall scale
+
             return List.of(new NativeShaderPatternEffect("pulsing_heart.fs",
                 new PatternTarget(this)));
         }
@@ -313,6 +319,8 @@ public class ShaderPanelsPatternConfig {
 
         @Override
         protected List<PatternEffect> createEffects() {
+            controls.setRange(TEControlTag.SIZE, 1, 2, 0.25); // overall scale
+
             return List.of(new NativeShaderPatternEffect("neon_cells.fs",
                 new PatternTarget(this)));
         }
